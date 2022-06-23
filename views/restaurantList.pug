@@ -1,0 +1,14 @@
+html 
+  head
+    title List of restaurants
+
+
+  body
+    a(href="http://localhost:3000") Home 
+    a(href="http://localhost:3000/addrestaurant") Add Restaurant 
+    a(href="http://localhost:3000/restaurants") Browse Restaurants 
+    ul
+      for i in JSON.parse(restaurants)
+
+        li 
+          a(href='/restaurants/'+ i.id)=i.name

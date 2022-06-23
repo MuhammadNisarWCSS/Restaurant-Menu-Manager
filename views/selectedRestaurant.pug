@@ -1,0 +1,72 @@
+html
+    head
+        title #{JSON.parse(selectedRestaurant).name}
+        
+
+        style(type="text/css").
+            p {
+                display:inline
+            }
+           
+    body 
+        a(href="http://localhost:3000") Home 
+        a(href="http://localhost:3000/addrestaurant") Add Restaurant 
+        a(href="http://localhost:3000/restaurants") Browse Restaurants 
+
+        h3 Restaurant ID: #{JSON.parse(selectedRestaurant).id}
+
+        h3 Restaurant Name:
+            input(type="text" id="restaurantName" value= `${JSON.parse(selectedRestaurant).name}`) 
+
+        h3 Restaurant Min Order: 
+            input(type="text" id="minimumOrder" value= `${JSON.parse(selectedRestaurant).min_order}`) 
+
+        h3 Delivery Fee: 
+            input(type="text" id="deliveryFee" value= `${JSON.parse(selectedRestaurant).delivery_fee}`) 
+
+        br
+        br
+
+        h3 Add Category:
+        br
+        p Category Name:
+            input(type="text" id="categoryName") 
+        br
+        button(type="button" id="newCategory" onclick="addCategory()") Add Category
+        
+
+        h3 Add Item: 
+        br
+        p Select Category: 
+            div(id="selected")
+               
+        br
+        p Item Name: 
+            input(type="text" id="itemName") 
+        br
+        p Item Descript: 
+            input(type="text" id="itemDescription") 
+        br
+        p Item Price:
+            input(type="text" id="itemPrice") 
+        br
+        button(type="button" id="newItem" onclick="addItem()") Add Item
+
+
+        br
+        br
+        h3 Menu: 
+        br
+        p(id="menu")
+
+   
+                
+        button(type="button" id="newChanges" onclick="saveChanges()") Save Changes
+
+        script!= `const object = ${selectedRestaurant};`
+        script(src="/updateRestaurantInfo.js")
+
+
+
+  
+
